@@ -20,7 +20,7 @@ If you're only 999,999% sure, then turn back now.
 
 # Configuring sudo to use it
 1. Open up`/etc/pam.d/sudo` in your favourite text editor
-2. Add `auth sufficient pam_touchid.so reason="execute a command as another user"` to the top of the file
+2. Add `auth sufficient pam_touchid.so reason="execute a command as another user"` to the top of the file, and not after "# sudo: auth account password session" which is not just a comment
 
 The procedure is pretty much the same for any other process, but you'd edit a different config file and probably change the reason too.
 
