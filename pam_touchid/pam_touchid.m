@@ -23,6 +23,9 @@ PAM_EXTERN int pam_sm_setcred(pam_handle_t *pamh, int flags, int argc, const cha
 PAM_EXTERN int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv) { return PAM_IGNORE; }
 
 PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char **argv) {
+    // Disable for remote access
+    if (getenv("SSH_TTY"))
+        return PAM_IGNORE;
     
     __block int result = PAM_AUTH_ERR;
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
